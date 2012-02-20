@@ -1,0 +1,78 @@
+﻿namespace PlanetTelex.Web.Common
+{
+    /// <summary>
+    /// Common HTML string literals, sometimes with values to format dynamically.
+    /// </summary>
+    public static class HtmlString
+    {
+        /// <summary>
+        /// &lt;br/&gt;
+        /// </summary>
+        public const string BR = "<br/>";
+
+        /// <summary>
+        /// &amp;nbsp;
+        /// </summary>
+        public const string NBSP = "&nbsp;";
+
+        /// <summary>
+        /// &amp;quot;
+        /// </summary>
+        public const string QUOT = "&quot;";
+
+        /// <summary>
+        /// &lt;strong&gt;
+        /// </summary>
+        public const string STRONG = "<strong>";
+
+        /// <summary>
+        /// &lt;/strong&gt;
+        /// </summary>
+        public const string STRONG_END = "</strong>";
+
+        /// <summary>
+        /// &lt;ul&gt;
+        /// </summary>
+        public const string UNORDERED_LIST = "<ul>";
+
+        /// <summary>
+        /// &lt;/ul&gt;
+        /// </summary>
+        public const string UNORDERED_LIST_END = "</ul>";
+
+        /// <summary>
+        /// &lt;li&gt;{0}&lt;/li&gt;
+        /// </summary>
+        public const string LIST_ITEM = "<li>{0}</li>";
+
+        /// <summary>
+        /// &lt;a href='{0}' {1}&gt;{2}&lt;/a&gt;
+        /// </summary>
+        public const string LINK = "<a href='{0}' {1}>{2}</a>";
+
+        /// <summary>
+        /// target='_blank'
+        /// </summary>
+        public const string LINK_TARGET_BLANK = "target='_blank' ";
+
+        /// <summary>
+        /// &lt;script type='text/javascript' language='javascript' src='{0}'&gt;&lt;/script&gt;
+        /// </summary>
+        public const string JAVASCRIPT_INCLUDE = "<script type='text/javascript' language='javascript' src='{0}'></script>";
+
+        /// <summary>
+        /// &lt;link type='text/css' rel='stylesheet' href='{0}' /&gt;
+        /// </summary>
+        public const string CSS_FILE_INCLUDE = "<link type='text/css' rel='stylesheet' href='{0}'/>";
+
+        /// <summary>
+        /// &lt;!--[if lt IE {0}]&gt;
+        /// </summary>
+        public const string LEGACY_IE_CONDITIONAL_START = "<!--[if lt IE {0}]>";
+
+        /// <summary>
+        /// &lt;![endif]--&gt;
+        /// </summary>
+        public const string LEGACY_IE_CONDITIONAL_STOP = "<![endif]-->";
+    }
+}

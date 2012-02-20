@@ -1,0 +1,88 @@
+﻿<html dir="LTR" xmlns:ndoc="urn:ndoc-schema">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="history" name="save" />
+    <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+    <title>RegExPattern Members</title>
+    <xml>
+    </xml>
+    <link rel="stylesheet" type="text/css" href="MSDN.css" />
+  </head>
+  <body id="bodyID" class="dtBODY">
+    <div id="nsbanner">
+      <div id="bannerrow1">
+        <table class="bannerparthead" cellspacing="0">
+          <tr id="hdr">
+            <td class="runninghead">Planet Telex .Net Library</td>
+            <td class="product">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div id="TitleRow">
+        <h1 class="dtH1">RegExPattern Members
+					</h1>
+      </div>
+    </div>
+    <div id="nstext">
+      <p>
+        <a href="PlanetTelex~PlanetTelex.Common.RegExPattern.html">RegExPattern overview</a>
+      </p>
+      <h4 class="dtH4">Public Static Fields</h4>
+      <div class="tablediv">
+        <table class="dtTABLE" cellspacing="0">
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.ALPHA_NUMERIC.html">ALPHA_NUMERIC</a></td><td width="50%"> ^[\p{L}\d]+$ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.ALPHA_NUMERIC_WITH_WHITESPACE.html">ALPHA_NUMERIC_WITH_WHITESPACE</a></td><td width="50%"> ^[\p{L}\d\s]*$ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.ALPHABETIC.html">ALPHABETIC</a></td><td width="50%"> ^\p{L}+$ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.ALPHABETIC_WITH_WHITESPACE.html">ALPHABETIC_WITH_WHITESPACE</a></td><td width="50%"> ^[\p{L}\s]*$ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.EMAIL_ADDRESS.html">EMAIL_ADDRESS</a></td><td width="50%"> ^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$ It verifies that: * Only letters, numbers and email acceptable symbols (+, _, -, .) are allowed - * No two different symbols may follow each other - * Cannot begin with a symbol - * Ending domain must be at least 2 letters - * Supports subdomains - * TLD must be between 2 and 6 letters (Ex: .ca, .museum) - * Only (-) and (.) symbols are allowed in domain, but not consecutively. Matches: g_s+gav@com.com | gav@gav.com | jim@jim.c.dc.ca Non-Matches: gs_.gs@com.com | gav@gav.c | jim@--c.ca </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.FRACTION.html">FRACTION</a></td><td width="50%"> [\s-]{0,1}[0-9]+/[1-9]+ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.GUID.html">GUID</a></td><td width="50%"> ^\{?[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}\}?$ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.HTML_TAG.html">HTML_TAG</a></td><td width="50%"> &lt;[^&gt;]*&gt; </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.IP_ADDRESS.html">IP_ADDRESS</a></td><td width="50%"> ^(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])$ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.ISBN.html">ISBN</a></td><td width="50%"> ^(ISBN){0,1}[\s-]{0,1}[0-9]{1}[\s-]{0,1}[0-9]{6}[\s-]{0,1}[0-9]{2}[\s-]{0,1}[xX0-9]{1}$ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.LEADING_NUMBERS.html">LEADING_NUMBERS</a></td><td width="50%"> /^[0-9]*/ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.NOT_ALPHA_NUMERIC.html">NOT_ALPHA_NUMERIC</a></td><td width="50%"> [^0-9a-zA-Z\\s] - this does include whitespaces as an alphanumeric character </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.NOT_ALPHA_NUMERIC_EXCLUDING_WHITE_SPACE.html">NOT_ALPHA_NUMERIC_EXCLUDING_WHITE_SPACE</a></td><td width="50%"> [^0-9a-zA-Z] - does not include whitespaces as alphanumeric characters </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.NOT_ALPHA_NUMERIC_FOR_URL.html">NOT_ALPHA_NUMERIC_FOR_URL</a></td><td width="50%"> [^0-9a-zA-Z\\s-\xC0-\xFF] - This does include whitespaces and hyphen characters. It also matches special extension ascii to include characters such as ê, ç, ñ. This regex expression was created specifically for a URL Rewriter. </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.NUMERIC.html">NUMERIC</a></td><td width="50%"> ^[\d]+$ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.NUMERIC_WITH_WHITESPACE.html">NUMERIC_WITH_WHITESPACE</a></td><td width="50%"> ^[\d\s]*$ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.PHONE_NUMBER.html">PHONE_NUMBER</a></td><td width="50%"> ^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]+$ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.UK_NATIONAL_INSURANCE_NUMBER.html">UK_NATIONAL_INSURANCE_NUMBER</a></td><td width="50%"> ^[A-Za-z]{2}[0-9]{6}[A-Za-z]{1}$ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.UK_POSTAL_CODE.html">UK_POSTAL_CODE</a></td><td width="50%"> ^[a-zA-Z]{1,2}[0-9][0-9A-Za-z]{0,1} {0,1}[0-9][A-Za-z]{2}$ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.URI.html">URI</a></td><td width="50%"></td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.US_ZIP_CODE.html">US_ZIP_CODE</a></td><td width="50%"> ^(\d{5}-\d{4}|\d{5})$|^([A-Z]\d[A-Z] \d[A-Z]\d)$ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.WHITESPACE.html">WHITESPACE</a></td><td width="50%"> ^[\s]*$ </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.XML_DOCTYPE_NODE.html">XML_DOCTYPE_NODE</a></td><td width="50%"> &lt;\\?xml[^&gt;]*\\?&gt; </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubfield.gif"></img><img src="static.gif" /><a href="PlanetTelex~PlanetTelex.Common.RegExPattern.XML_NAMESPACE_ATTRIBUTE.html">XML_NAMESPACE_ATTRIBUTE</a></td><td width="50%"> xmlns=\"[^&gt;\"]*\" </td></tr></table>
+      </div>
+      <h4 class="dtH4">Public Instance Methods</h4>
+      <div class="tablediv">
+        <table class="dtTABLE" cellspacing="0">
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="http://msdn.microsoft.com/en-us/library/System.Object.Equals(VS.90).aspx">Equals</a> (inherited from <b>Object</b>)</td><td width="50%"></td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="http://msdn.microsoft.com/en-us/library/System.Object.GetHashCode(VS.90).aspx">GetHashCode</a> (inherited from <b>Object</b>)</td><td width="50%"></td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="http://msdn.microsoft.com/en-us/library/System.Object.GetType(VS.90).aspx">GetType</a> (inherited from <b>Object</b>)</td><td width="50%"></td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubmethod.gif"></img><a href="http://msdn.microsoft.com/en-us/library/System.Object.ToString(VS.90).aspx">ToString</a> (inherited from <b>Object</b>)</td><td width="50%"></td></tr></table>
+      </div>
+      <h4 class="dtH4">Protected Instance Methods</h4>
+      <div class="tablediv">
+        <table class="dtTABLE" cellspacing="0">
+<tr VALIGN="top"><td width="50%"><img src="protmethod.gif"></img><a href="http://msdn.microsoft.com/en-us/library/System.Object.Finalize(VS.90).aspx">Finalize</a> (inherited from <b>Object</b>)</td><td width="50%"></td></tr>
+<tr VALIGN="top"><td width="50%"><img src="protmethod.gif"></img><a href="http://msdn.microsoft.com/en-us/library/System.Object.MemberwiseClone(VS.90).aspx">MemberwiseClone</a> (inherited from <b>Object</b>)</td><td width="50%"></td></tr></table>
+      </div>
+      <h4 class="dtH4">See Also</h4>
+      <p>
+        <a href="PlanetTelex~PlanetTelex.Common.RegExPattern.html">RegExPattern Class</a> | <a href="~PlanetTelex.Common.html">PlanetTelex.Common Namespace</a></p>
+      <hr />
+      <div id="footer">
+        <p>
+          <a href="mailto:inquiries@planettelex.net?subject=Planet%20Telex%20.Net%20Library%20Documentation%20Feedback:%20RegExPattern%20Members&#xD;&#xA;						">Send comments on this topic.</a>
+        </p>
+        <p>
+          <a href="http://www.planettelex.net">Copyright Planet Telex, Inc. 2007-2015</a>
+        </p>
+        <p>Generated from assembly PlanetTelex [2.0.0.0] by <a href="http://ndoc3.sourceforget.net">NDoc3</a></p>
+      </div>
+    </div>
+  </body>
+</html>

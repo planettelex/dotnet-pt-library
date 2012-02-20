@@ -1,0 +1,53 @@
+<project SchemaVersion="1.3">
+    <assemblies>
+        <assembly location=".\Source\PlanetTelex\bin\PlanetTelex.dll" documentation=".\Source\PlanetTelex\bin\PlanetTelex.xml" />
+        <assembly location=".\Source\PlanetTelex.Drawing\bin\PlanetTelex.Drawing.dll" documentation=".\Source\PlanetTelex.Drawing\bin\PlanetTelex.Drawing.xml" />
+        <assembly location=".\Source\PlanetTelex.Web\bin\PlanetTelex.Web.dll" documentation=".\Source\PlanetTelex.Web\bin\PlanetTelex.Web.xml" />
+        <assembly location=".\Source\PlanetTelex.Web.Mvc\bin\PlanetTelex.Web.Mvc.dll" documentation=".\Source\PlanetTelex.Web.Mvc\bin\PlanetTelex.Web.Mvc.xml" />
+    </assemblies>
+    <namespaces>
+        <namespace name="PlanetTelex">PlanetTelex assembly root namespace.</namespace>
+        <namespace name="PlanetTelex.Attributes">Class and method attributes.</namespace>
+        <namespace name="PlanetTelex.Collections">Collection classes.</namespace>
+        <namespace name="PlanetTelex.Common">Common strings, enums and data models.</namespace>
+        <namespace name="PlanetTelex.Common.Models">Common data models and buisness objects.</namespace>
+        <namespace name="PlanetTelex.Drawing">PlanetTelex.Drawing assembly root namespace.</namespace>
+        <namespace name="PlanetTelex.Drawing.Properties">PlanetTelex.Drawing assembly properties.</namespace>
+        <namespace name="PlanetTelex.Extensions">Extension methods for a variety of classes.</namespace>
+        <namespace name="PlanetTelex.Properties">PlanetTelex assembly properties.</namespace>
+        <namespace name="PlanetTelex.Serialization">Classes to assist in the serialization and deserialization of data and objects.</namespace>
+        <namespace name="PlanetTelex.Utilities">General utilities.</namespace>
+        <namespace name="PlanetTelex.Web">PlanetTelex.Web assembly root namespace.</namespace>
+        <namespace name="PlanetTelex.Web.Caching">Data caching helpers.</namespace>
+        <namespace name="PlanetTelex.Web.Common">Common web strings and interfaces.</namespace>
+        <namespace name="PlanetTelex.Web.Common.ModelViews">HTML markup views of common data models.</namespace>
+        <namespace name="PlanetTelex.Web.Extensions">Extension methods with dependencies on web classes.</namespace>
+        <namespace name="PlanetTelex.Web.Mvc.Attributes">MVC action attributes.</namespace>
+        <namespace name="PlanetTelex.Web.Mvc.Extensions.Ajax">AjaxHelper extension methods.</namespace>
+        <namespace name="PlanetTelex.Web.Mvc.Extensions.Html.Analytics">HtmlHelper extensions for analytics.</namespace>
+        <namespace name="PlanetTelex.Web.Mvc.Extensions.Html.Links">HtmlHelper extensions for links.</namespace>
+        <namespace name="PlanetTelex.Web.Mvc.Extensions.Html.Lists">HtmlHelper extensions for lists.</namespace>
+        <namespace name="PlanetTelex.Web.Mvc.Properties">PlanetTelex.Web.Mvc assembly properties.</namespace>
+        <namespace name="PlanetTelex.Web.Mvc.Results">MVC results.</namespace>
+        <namespace name="PlanetTelex.Web.Properties">PlanetTelex.Web assembly properties.</namespace>
+        <namespace name="PlanetTelex.Web.Protocols">Classes to assist dealing with data over web protocols.</namespace>
+        <namespace name="PlanetTelex.Web.Protocols.Http">Classes to assist dealing with data over the HTTP protocol.</namespace>
+        <namespace name="PlanetTelex.Web.Request">Classes to assist in dealing with web requests.</namespace>
+        <namespace name="PlanetTelex.Web.Syndication">Classes to assist in web syndication.</namespace>
+    </namespaces>
+    <documenters>
+        <documenter name="MSDN">
+            <property name="OutputDirectory" value="Documentation\Html\" />
+            <property name="HtmlHelpName" value="Planet Telex .Net Library Documentation" />
+            <property name="Title" value="Planet Telex .Net Library" />
+            <property name="OutputTarget" value="Web" />
+            <property name="AssemblyVersionInfo" value="AssemblyVersion" />
+            <property name="CopyrightText" value="Copyright Planet Telex, Inc. 2007-2015" />
+            <property name="CopyrightHref" value="http://www.planettelex.net" />
+            <property name="FeedbackEmailAddress" value="inquiries@planettelex.net" />
+            <property name="SdkDocVersion" value="SDK_v3_5" />
+            <property name="SdkDocVersionString" value="VS.90" />
+            <property name="CleanIntermediates" value="True" />
+        </documenter>
+    </documenters>
+</project>
