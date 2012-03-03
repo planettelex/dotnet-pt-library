@@ -289,12 +289,28 @@ namespace PlanetTelex.Extensions
         #region Alteration Methods
 
         /// <summary>
-        /// Creates a copy of this string that is titled cased. This follows the algorithm that both the first and last words of the string are capitalized,
-        /// as are most other words in the string, with the exception of a list of excluded words (and, of, etc.) This list is a comma delimited assembly resource.
+        /// Creates a copy of this string that is titled cased. This means that most words in the given string will be all lowercase except for their first letter,
+        /// which will be a capital. Expections to this rule include a list of words to lowercase when not the first or last word (and, of, etc.).
+        /// This list is an assembly resource. There is another resource that specifies words to be specifically cased (like iPhone). The items in this resource
+        /// are supplimented by a provided list of other words in which the casing doesn't follow the general rule.
         /// </summary>
         /// <param name="s">This string.</param>
         /// <returns>A new string that is title cased.</returns>
         public static string TitleCase(this string s)
+        {
+            return StringUtility.TitleCase(s);
+        }
+
+        /// <summary>
+        /// Creates a copy of this string that is titled cased. This means that most words in the given string will be all lowercase except for their first letter,
+        /// which will be a capital. Expections to this rule include a list of words to lowercase when not the first or last word (and, of, etc.).
+        /// This list is an assembly resource. There is another resource that specifies words to be specifically cased (like iPhone). The items in this resource
+        /// are supplimented by a provided list of other words in which the casing doesn't follow the general rule.
+        /// </summary>
+        /// <param name="s">This string.</param>
+        /// <param name="specificallyCasedWords">A list of words to case specifically, like "MySpace".</param>
+        /// <returns>A new string that is title cased.</returns>
+        public static string TitleCase(this string s, string[] specificallyCasedWords)
         {
             return StringUtility.TitleCase(s);
         }
@@ -390,6 +406,22 @@ namespace PlanetTelex.Extensions
         {
             if (s == null) throw new ArgumentNullException("s");
             return Regex.Replace(s, pattern, replacement, options);
+        }
+
+        /// <summary>
+        /// Removes a chunk of this string and replaces it with the specified string.
+        /// </summary>
+        /// <param name="s">This string.</param>
+        /// <param name="removeStartIndex">Starting index to remove.</param>
+        /// <param name="removeCount">The number of characters past the start index to remove.</param>
+        /// <param name="toInsert">The string to insert.</param>
+        /// <returns>A new string with text removed and new text inserted.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="s" /> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="removeStartIndex" /> is outsides the bounds of this string.</exception>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="removeCount" /> plus <paramref name="removeStartIndex" /> exceeds the size of the string.</exception>
+        public static string ReplaceAt(this string s, int removeStartIndex, int removeCount, string toInsert)
+        {
+            return StringUtility.ReplaceAt(s, removeStartIndex, removeCount, toInsert);
         }
 
         #endregion

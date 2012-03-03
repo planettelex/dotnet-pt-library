@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
@@ -252,6 +253,77 @@ namespace PlanetTelex.Utilities
 
         #region Alteration Methods
 
+        #region Title Case Private Methods and Properties
+
+        private enum WordPosition { First, Middle, Last }
+        private readonly char[] _weakWordSeparators = new[]{' ', ','};
+        private readonly char[] _strongWordSeparators = new[] { '.', '?', '!', '(', ')', '{', '}', '[', ']', '<', '>', '/', '\\', '&' };
+        
+        /// <summary>
+        /// All designated word separators.
+        /// </summary>
+        private IEnumerable<char> Separators
+        {
+            get
+            {
+                return _weakWordSeparators.Concat(_strongWordSeparators);
+            }
+        }
+
+        /// <summary>
+        /// A list of words to case specifically as specified by the assembly resource TitleCaseToCase.
+        /// </summary>
+        private static IEnumerable<string> ToCase
+        {
+            get
+            {
+                if (_toCase == null)
+                    _toCase = Resources.TitleCaseToCase.Split(',', ' ');
+                
+                return _toCase;
+            }
+        }
+        private static string[] _toCase;
+
+        /// <summary>
+        /// A list of words to force lowercase when they aren't the first or last word in a title as specified by the assembly resource TitleCaseToLower.
+        /// </summary>
+        private static IEnumerable<string> ToLower
+        {
+            get
+            {
+                if (_toLower == null)
+                    _toLower = Resources.TitleCaseToLower.Split(',', ' ');
+
+                return _toLower;
+            }
+        }
+        private static string[] _toLower;
+
+        /// <summary>
+        /// Cases a single word.
+        /// </summary>
+        /// <param name="wordToCase">The word to case.</param>
+        /// <param name="wordPosition">The word position: First, Middle or Last, important because it determines capitalization rules.</param>
+        /// <param name="preceedingSeparator">The preceeding separator, important because it determines capitalization rules.</param>
+        /// <param name="specificallyCasedWords">A list of words to case specifically, like "MySpace".</param>
+        /// <returns>A title cased word.</returns>
+        private string CaseWord(string wordToCase, WordPosition wordPosition, char preceedingSeparator, string[] specificallyCasedWords)
+        {
+            if (ToCase.Contains(wordToCase, StringComparer.OrdinalIgnoreCase))
+                return ToCase.FirstOrDefault(s => s.Equals(wordToCase, StringComparison.OrdinalIgnoreCase));
+
+            if (specificallyCasedWords != null && specificallyCasedWords.Contains(wordToCase, StringComparer.OrdinalIgnoreCase))
+                return specificallyCasedWords.FirstOrDefault(s => s.Equals(wordToCase, StringComparison.OrdinalIgnoreCase));
+
+            if (ToLower.Contains(wordToCase, StringComparer.OrdinalIgnoreCase) && wordPosition == WordPosition.Middle && _weakWordSeparators.Contains(preceedingSeparator))
+                return wordToCase.ToLower();
+
+            return UppercaseFirstLetter(wordToCase.ToLower());
+        }
+
+        #endregion
+
         /// <summary>
         /// Creates a copy of a string that is titled cased. This follows the algorithm that both the first and last words of the string are capitalized,
         /// as are most other words in the string, with the exception of a list of excluded words (and, of, etc.) This list is a comma delimited assembly resource.
@@ -260,42 +332,64 @@ namespace PlanetTelex.Utilities
         /// <returns>A new string that is title cased.</returns>
         public virtual string TitleCase(string toTitleCase)
         {
-            return TitleCase(toTitleCase, true);
+            return TitleCase(toTitleCase, null);
         }
 
         /// <summary>
-        /// Creates a copy of a string that is titled cased. This follows the algorithm that both the first and last words of the string are capitalized,
-        /// as are most other words in the string, with the exception of a list of excluded words (and, of, etc.) This list is a comma delimited assembly resource.
+        /// Creates a copy of a string that is titled cased. This means that most words in the given string will be all lowercase except for their first letter,
+        /// which will be a capital. Expections to this rule include a list of words to lowercase when not the first or last word (and, of, etc.).
+        /// This list is an assembly resource. There is another resource that specifies words to be specifically cased (like iPhone). The items in this resource
+        /// are supplimented by a provided list of other words in which the casing doesn't follow the general rule.
         /// </summary>
         /// <param name="toTitleCase">The string to title case.</param>
-        /// <param name="forceLowercasing">If set to <c>true</c> this operation will force the rest of the string to be lowercase, otherwise the casing passed the first letter is left untouched.</param>
+        /// <param name="specificallyCasedWords">A list of words to case specifically, like "MySpace".</param>
         /// <returns>A new string that is title cased.</returns>
-        public virtual string TitleCase(string toTitleCase, bool forceLowercasing)
+        public virtual string TitleCase(string toTitleCase, string[] specificallyCasedWords)
         {
             if (toTitleCase == null)
                 return null;
 
-            if (_exclusions == null && !string.IsNullOrEmpty(Resources.TitleCaseExceptions))
+            StringBuilder stringBuilder = new StringBuilder();
+            string currentWord = string.Empty;
+            string lastWord = string.Empty;
+            char lastSeparator = '\0';
+            int wordCount = 0;
+
+            foreach (char c in toTitleCase)
             {
-                _exclusions = Resources.TitleCaseExceptions.Split(',');
-                for (int i = 0; i < _exclusions.Length; i++)
-                    _exclusions[i] = _exclusions[i].Trim().ToLower(); // Prevent data formatting from causing problems.
+                if (Separators.Contains(c)) // The current character is a separator.
+                {
+                    if (currentWord.Length > 0)
+                    {
+                        WordPosition position = wordCount == 0 ? WordPosition.First : WordPosition.Middle;
+                        stringBuilder.Append(CaseWord(currentWord, position, lastSeparator, specificallyCasedWords));
+                        lastWord = currentWord;
+                        currentWord = string.Empty;
+                        lastSeparator = '\0';
+                        wordCount++;
+                    }
+                    stringBuilder.Append(c);
+                    // Set the last separator to the current character, unless it is a space AND the lastSeparator is a strong separator.
+                    // This is done so CaseWord will work correctly after strong and weak separators happen in succession, like period-space.
+                    if (!(_strongWordSeparators.Contains(lastSeparator) && char.IsWhiteSpace(c)))
+                        lastSeparator = c;
+                }
+                else // The current character is not a separator.
+                    currentWord += c;
             }
 
-            string[] titleWords = toTitleCase.Split(' ');
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i < titleWords.Length; i++)
+            if (currentWord.Length > 0) // Add the last word since it won't be written unless the last character in the title is a separator.
+                stringBuilder.Append(CaseWord(currentWord, WordPosition.Last, lastSeparator, specificallyCasedWords));
+            else // The last character was a separator. If the last word was in the ToLower list, it is incorrect at this point- this code corrects it.
             {
-                string word = forceLowercasing ? titleWords[i].ToLower() : titleWords[i]; // Enforce lowercasing if specified.
-                // Add the lowercase word if it is an excluded word, but not the first or last word in the title.
-                if (_exclusions != null && _exclusions.Contains(word.ToLower()) && i != 0 && i != titleWords.Length - 1)
-                    stringBuilder.Append(word.ToLower() + " ");
-                else // Otherwise, capitalize the first letter of the word.
-                    stringBuilder.Append(UppercaseFirstLetter(word) + " ");
+                string title = stringBuilder.ToString();
+                int lastWordIndex = title.LastIndexOf(lastWord, StringComparison.OrdinalIgnoreCase);
+                string toInsert = CaseWord(lastWord, WordPosition.Last, '\0', specificallyCasedWords);
+                return ReplaceAt(title, lastWordIndex, lastWord.Length, toInsert);
             }
-            return stringBuilder.ToString().TrimEnd();
+
+            return stringBuilder.ToString();
         }
-        private string[] _exclusions; // This instance can keep this parsed resource on hand.
 
         /// <summary>
         /// Creates a copy of a string in which the first letter is uppercase.
@@ -451,6 +545,27 @@ namespace PlanetTelex.Utilities
             returnVal = Regex.Replace(returnVal, "[\u02DC|\u00A0]", " ");
 
             return returnVal;
+        }
+
+        /// <summary>
+        /// Removes a chunk of a string and replaces it with the specified string.
+        /// </summary>
+        /// <param name="toReplaceAt">A string to replace a chunck of with another string.</param>
+        /// <param name="removeStartIndex">Starting index to remove.</param>
+        /// <param name="removeCount">The number of characters past the start index to remove.</param>
+        /// <param name="toInsert">The string to insert.</param>
+        /// <returns>A new string with text removed and new text inserted.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="toReplaceAt" /> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="removeStartIndex" /> is outsides the bounds of this string.</exception>
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="removeCount" /> plus <paramref name="removeStartIndex" /> exceeds the size of the string.</exception>
+        public string ReplaceAt(string toReplaceAt, int removeStartIndex, int removeCount, string toInsert)
+        {
+            if (toReplaceAt == null) throw new ArgumentNullException("toReplaceAt");
+            if (removeStartIndex >= toReplaceAt.Length) throw new ArgumentOutOfRangeException("removeStartIndex");
+            if (removeStartIndex + removeCount >= toReplaceAt.Length) throw new ArgumentOutOfRangeException("removeCount", Resources.IndexPlusCountExceedsSize);
+
+            string removed = toReplaceAt.Remove(removeStartIndex, removeCount);
+            return removed.Insert(removeStartIndex, toInsert);
         }
 
         #endregion

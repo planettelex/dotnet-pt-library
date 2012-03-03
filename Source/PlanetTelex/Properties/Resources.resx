@@ -245,12 +245,19 @@
     <value>No MimeTypeAttribute supplied for FileExtension.</value>
     <comment>EnumExtensions</comment>
   </data>
-  <data name="TitleCaseExceptions" xml:space="preserve">
-    <value>the, of, or, and, an, a, in, is, are, to, on</value>
+  <data name="TitleCaseToLower" xml:space="preserve">
+    <value>the, of, or, and, an, a, in, is, are, to, on, with</value>
     <comment>StringUtility</comment>
   </data>
   <data name="InvalidUri" xml:space="preserve">
     <value>The argument is not a valid http URI.</value>
     <comment>NetUtility</comment>
+  </data>
+  <data name="TitleCaseToCase" xml:space="preserve">
+    <value>iPod, iPad, iPhone, iMac</value>
+    <comment>StringUtility</comment>
+  </data>
+  <data name="IndexPlusCountExceedsSize" xml:space="preserve">
+    <value>Start index plus count exceeds the size of the string.</value>
   </data>
 </root>

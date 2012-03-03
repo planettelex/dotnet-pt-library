@@ -116,35 +116,56 @@ namespace PlanetTelex.UnitTests.Utilities
         [Test]
         public void TitleCaseTest()
         {
-            const string test1 = "fReddy thudPucker";
-            const string test1Result = "Freddy Thudpucker";
-            const string test2 = "mary whiner";
-            const string test2Result = "Mary Whiner";
-            const string test3 = "o two";
-            const string test3Result = "O Two";
+            const string test0 = "the title";
+            const string test0Result = "The Title";
+            const string test1 = "return of the jedi";
+            const string test1Result = "Return of the Jedi";
+            const string test2 = "LORD OF THE RINGS";
+            const string test2Result = "Lord of the Rings";
+            const string test3 = "portugal. the man";
+            const string test3Result = "Portugal. The Man";
             const string test4 = "blood on the dance floor";
             const string test4Result = "Blood on the Dance Floor";
-            const string test5 = "Why MUTEMATH Is The Best band In the World";
-            const string test5Result = "Why MUTEMATH is the Best Band in the World";
-            const string test6 = "I HAVE NO IDEA WHY I AM YELLING AND NEITHER DO YOU";
-            const string test6Result = "I Have No Idea Why I Am Yelling and Neither Do You";
-            const string test7 = "and The Band PlaYed on";
-            const string test7Result = "And the Band Played On";
+            const string test5 = "mutemath roCks tHe goTHic IN Denver";
+            const string test5Result = "MUTEMATH Rocks the Gothic in Denver";
+            const string test6 = "Why everybody needs an iphone and ipad";
+            const string test6Result = "Why Everybody Needs an iPhone and iPad";
+            const string test7 = "I want you (she's so heavy)";
+            const string test7Result = "I Want You (She's So Heavy)";
+            const string test8 = "(I don't know) and i don't care";
+            const string test8Result = "(I Don't Know) And I Don't Care";
+            const string test9 = "the zombie! the werewolf! the ghost!!!";
+            const string test9Result = "The Zombie! The Werewolf! The Ghost!!!";
+            const string test10 = "...and the band played on!";
+            const string test10Result = "...And the Band Played On!";
+            const string test11 = "hop on pop";
+            const string test11Result = "Hop on Pop";
+            const string test12 = "has anybody seen my iPhone???";
+            const string test12Result = "Has Anybody Seen My iPhone???";
+            const string test13 = "PINION/terrible lie";
+            const string test13Result = "Pinion/Terrible Lie";
+            const string test14 = "bOrn In thE u.s.A.";
+            const string test14Result = "Born in the U.S.A.";
+            const string test15 = "i got you (at the end of the century)";
+            const string test15Result = "I Got You (At the End of the Century)";
+            string[] casedWords = new[] {"MUTEMATH"};
 
-            string processed = _stringUtility.TitleCase(test1);
-            Assert.That(processed == test1Result);
-            processed = _stringUtility.TitleCase(test2);
-            Assert.That(processed == test2Result);
-            processed = _stringUtility.TitleCase(test3);
-            Assert.That(processed == test3Result);
-            processed = _stringUtility.TitleCase(test4);
-            Assert.That(processed == test4Result);
-            processed = _stringUtility.TitleCase(test5, false);
-            Assert.That(processed == test5Result);
-            processed = _stringUtility.TitleCase(test6);
-            Assert.That(processed == test6Result);
-            processed = _stringUtility.TitleCase(test7);
-            Assert.That(processed == test7Result);
+            Assert.That(_stringUtility.TitleCase(test0, null) == test0Result);
+            Assert.That(_stringUtility.TitleCase(test1, null) == test1Result);
+            Assert.That(_stringUtility.TitleCase(test2, casedWords) == test2Result);
+            Assert.That(_stringUtility.TitleCase(test3, casedWords) == test3Result);
+            Assert.That(_stringUtility.TitleCase(test4, casedWords) == test4Result);
+            Assert.That(_stringUtility.TitleCase(test5, casedWords) == test5Result);
+            Assert.That(_stringUtility.TitleCase(test6, casedWords) == test6Result);
+            Assert.That(_stringUtility.TitleCase(test7, casedWords) == test7Result);
+            Assert.That(_stringUtility.TitleCase(test8, casedWords) == test8Result);
+            Assert.That(_stringUtility.TitleCase(test9, casedWords) == test9Result);
+            Assert.That(_stringUtility.TitleCase(test10, casedWords) == test10Result);
+            Assert.That(_stringUtility.TitleCase(test11, casedWords) == test11Result);
+            Assert.That(_stringUtility.TitleCase(test12, casedWords) == test12Result);
+            Assert.That(_stringUtility.TitleCase(test13, casedWords) == test13Result);
+            Assert.That(_stringUtility.TitleCase(test14, casedWords) == test14Result);
+            Assert.That(_stringUtility.TitleCase(test15, casedWords) == test15Result);
         }
               
         /// <summary>
