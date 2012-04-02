@@ -82,12 +82,6 @@
     <Compile Include="Utilities\StringUtilityTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PlanetTelex\PlanetTelex.csproj">
-      <Project>{742EB706-84C3-4C25-98B9-EA05D83C6A4C}</Project>
-      <Name>PlanetTelex</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
@@ -104,7 +98,12 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PlanetTelex\PlanetTelex-Net40.csproj">
+      <Project>{742EB706-84C3-4C25-98B9-EA05D83C6A4C}</Project>
+      <Name>PlanetTelex-Net40</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
