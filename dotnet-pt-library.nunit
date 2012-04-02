@@ -2,6 +2,7 @@
   <Settings activeconfig="Debug" />
   <Config name="Debug" binpathtype="Auto">
     <assembly path="Source\PlanetTelex.Tests\bin\PlanetTelex.UnitTests.dll" />
+    <assembly path="Source\PlanetTelex.Web.Tests\bin\PlanetTelex.Web.UnitTests.dll" />
   </Config>
   <Config name="Release" binpathtype="Auto" />
 </NUnitProject>

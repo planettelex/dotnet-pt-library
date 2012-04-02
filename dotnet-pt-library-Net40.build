@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--EXTERNAL_PROPERTIES: database.server-->
+<project name="dotnet-pt-library" default="build" basedir="." xmlns="http://nant.sf.net/release/0.90/nant.xsd">
+  <description>Main Solution Build</description>
+
+  <property name="solution.file" value="dotnet-pt-library-Net40.sln"/>
+  <property name="nunit.project" value="dotnet-pt-library.nunit"/>
+  <property name="nant.settings.currentframework" value="net-4.0" />
+  <property name="msbuild.path" value="C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe"/>
+  <property name="solution.configuration" value="Debug;TargetFrameworkVersion=v4.0;WarningLevel=0"/>
+  <property name="nunit.path" value="nunit-console.exe"/>
+
+  <target name="clean" description="Removes all previously generated solution files.">
+    <exec program="${msbuild.path}">
+      <arg line='"${solution.file}"' />
+      <arg value="/target:Clean" />
+      <arg value="/verbosity:minimal" />
+      <arg value="/nologo" />
+    </exec>
+  </target>
+  
+  <target name="build" description="Compiles the main solution.">
+    <exec program="${msbuild.path}">
+      <arg line='"${solution.file}"' />
+      <arg line="/property:Configuration=${solution.configuration}" />
+      <arg value="/target:Rebuild" />
+      <arg value="/verbosity:minimal" />
+      <arg value="/nologo" />
+    </exec>
+  </target>
+  
+  <target name="test" depends="build" description="Runs all test cases">
+    <delete file="TestResult.xml" failonerror="false" />
+    <exec program="${nunit.path}">
+      <arg line='"${nunit.project}"' />
+      <arg value="/nodots" />
+      <arg value="/nologo" />
+    </exec>
+  </target>
+</project>
