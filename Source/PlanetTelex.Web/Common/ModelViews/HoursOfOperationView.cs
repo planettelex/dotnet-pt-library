@@ -29,7 +29,7 @@ namespace PlanetTelex.Web.Common.ModelViews
             BusinessHours day;
             BusinessHours nextday;
 
-            StringBuilder hoursHtml = new StringBuilder(HtmlString.STRONG);
+            StringBuilder hoursHtml = new StringBuilder(HtmlStrings.STRONG);
             hoursHtml.Append(Enum.GetName(typeof(DayOfWeek), DayOfWeek.Monday));
 
             for (int i = 1; i < 6; i++)
@@ -44,9 +44,9 @@ namespace PlanetTelex.Web.Common.ModelViews
                     if (isSame)
                         hoursHtml.Append(" - " + Enum.GetName(typeof(DayOfWeek), i - 1));
 
-                    hoursHtml.Append(HtmlString.STRONG_END + HtmlString.BR + HtmlString.NBSP + HtmlString.NBSP);
+                    hoursHtml.Append(HtmlStrings.STRONG_END + HtmlStrings.BR + HtmlStrings.NBSP + HtmlStrings.NBSP);
                     hoursHtml.Append(" " + Resources.GenerateBusinessHoursHtmlClosed + " ");
-                    hoursHtml.Append(HtmlString.BR + HtmlString.STRONG);
+                    hoursHtml.Append(HtmlStrings.BR + HtmlStrings.STRONG);
                     hoursHtml.Append(Enum.GetName(typeof(DayOfWeek), i + 1));
                     isSame = false;
                 }
@@ -55,11 +55,11 @@ namespace PlanetTelex.Web.Common.ModelViews
                     if (isSame)
                         hoursHtml.Append(" - " + Enum.GetName(typeof(DayOfWeek), i - 1));
 
-                    hoursHtml.Append(HtmlString.STRONG_END + HtmlString.BR + HtmlString.NBSP + HtmlString.NBSP);
+                    hoursHtml.Append(HtmlStrings.STRONG_END + HtmlStrings.BR + HtmlStrings.NBSP + HtmlStrings.NBSP);
                     hoursHtml.Append(day.DisplayOpenTime);
                     hoursHtml.Append(" " + Resources.GenerateBusinessHoursHtmlTo + " ");
                     hoursHtml.Append(day.DisplayCloseTime);
-                    hoursHtml.Append(HtmlString.BR + HtmlString.STRONG);
+                    hoursHtml.Append(HtmlStrings.BR + HtmlStrings.STRONG);
                     hoursHtml.Append(Enum.GetName(typeof(DayOfWeek), i + 1));
                     isSame = false;
                 }
@@ -74,40 +74,40 @@ namespace PlanetTelex.Web.Common.ModelViews
             if (day.IsClosed && nextday.IsClosed)
             {
                 hoursHtml.Append(" - " + Enum.GetName(typeof(DayOfWeek), 0));
-                hoursHtml.Append(HtmlString.STRONG_END + HtmlString.BR + HtmlString.NBSP + HtmlString.NBSP);
+                hoursHtml.Append(HtmlStrings.STRONG_END + HtmlStrings.BR + HtmlStrings.NBSP + HtmlStrings.NBSP);
                 hoursHtml.Append(" " + Resources.GenerateBusinessHoursHtmlClosed + " ");
             }
             else if (day.IsClosed && !nextday.IsClosed)
             {
-                hoursHtml.Append(HtmlString.STRONG_END + HtmlString.BR + HtmlString.NBSP + HtmlString.NBSP);
+                hoursHtml.Append(HtmlStrings.STRONG_END + HtmlStrings.BR + HtmlStrings.NBSP + HtmlStrings.NBSP);
                 hoursHtml.Append(" " + Resources.GenerateBusinessHoursHtmlClosed + " ");
-                hoursHtml.Append(HtmlString.BR + HtmlString.STRONG);
+                hoursHtml.Append(HtmlStrings.BR + HtmlStrings.STRONG);
                 hoursHtml.Append(Enum.GetName(typeof(DayOfWeek), 0));
-                hoursHtml.Append(HtmlString.STRONG_END + HtmlString.BR + HtmlString.NBSP + HtmlString.NBSP);
+                hoursHtml.Append(HtmlStrings.STRONG_END + HtmlStrings.BR + HtmlStrings.NBSP + HtmlStrings.NBSP);
                 hoursHtml.Append(nextday.DisplayOpenTime);
                 hoursHtml.Append(" " + Resources.GenerateBusinessHoursHtmlTo + " ");
-                hoursHtml.Append(nextday.DisplayCloseTime + HtmlString.BR);
+                hoursHtml.Append(nextday.DisplayCloseTime + HtmlStrings.BR);
             }
             else if (String.CompareOrdinal(day.DisplayOpenTime, nextday.DisplayOpenTime) != 0 || String.CompareOrdinal(day.DisplayCloseTime, nextday.DisplayCloseTime) != 0)
             {
                 if (isSame)
                     hoursHtml.Append(" - " + Enum.GetName(typeof(DayOfWeek), 6));
 
-                hoursHtml.Append(HtmlString.STRONG_END + HtmlString.BR + HtmlString.NBSP + HtmlString.NBSP);
+                hoursHtml.Append(HtmlStrings.STRONG_END + HtmlStrings.BR + HtmlStrings.NBSP + HtmlStrings.NBSP);
                 hoursHtml.Append(day.DisplayOpenTime);
                 hoursHtml.Append(" " + Resources.GenerateBusinessHoursHtmlTo + " ");
                 hoursHtml.Append(day.DisplayCloseTime);
-                hoursHtml.Append(HtmlString.BR + HtmlString.STRONG);
+                hoursHtml.Append(HtmlStrings.BR + HtmlStrings.STRONG);
                 hoursHtml.Append(Enum.GetName(typeof(DayOfWeek), 0));
-                hoursHtml.Append(HtmlString.STRONG_END + HtmlString.BR + HtmlString.NBSP + HtmlString.NBSP);
+                hoursHtml.Append(HtmlStrings.STRONG_END + HtmlStrings.BR + HtmlStrings.NBSP + HtmlStrings.NBSP);
                 hoursHtml.Append(nextday.DisplayOpenTime);
                 hoursHtml.Append(" " + Resources.GenerateBusinessHoursHtmlTo + " ");
-                hoursHtml.Append(nextday.DisplayCloseTime + HtmlString.BR);
+                hoursHtml.Append(nextday.DisplayCloseTime + HtmlStrings.BR);
             }
             else if (String.CompareOrdinal(day.DisplayOpenTime, nextday.DisplayOpenTime) == 0 && String.CompareOrdinal(day.DisplayCloseTime, nextday.DisplayCloseTime) == 0 && isSame)
             {
                 hoursHtml.Append(" - " + Enum.GetName(typeof(DayOfWeek), 0));
-                hoursHtml.Append(HtmlString.STRONG_END + HtmlString.BR + HtmlString.NBSP + HtmlString.NBSP);
+                hoursHtml.Append(HtmlStrings.STRONG_END + HtmlStrings.BR + HtmlStrings.NBSP + HtmlStrings.NBSP);
                 hoursHtml.Append(day.DisplayOpenTime);
                 hoursHtml.Append(" " + Resources.GenerateBusinessHoursHtmlTo + " ");
                 hoursHtml.Append(day.DisplayCloseTime);
@@ -115,23 +115,23 @@ namespace PlanetTelex.Web.Common.ModelViews
             else if (String.CompareOrdinal(day.DisplayOpenTime, nextday.DisplayOpenTime) == 0 && String.CompareOrdinal(day.DisplayCloseTime, nextday.DisplayCloseTime) == 0 && !isSame)
             {
                 hoursHtml.Append(" - " + Enum.GetName(typeof(DayOfWeek), 6));
-                hoursHtml.Append(HtmlString.STRONG_END + HtmlString.BR + HtmlString.NBSP + HtmlString.NBSP);
+                hoursHtml.Append(HtmlStrings.STRONG_END + HtmlStrings.BR + HtmlStrings.NBSP + HtmlStrings.NBSP);
                 hoursHtml.Append(day.DisplayOpenTime);
                 hoursHtml.Append(" " + Resources.GenerateBusinessHoursHtmlTo + " ");
                 hoursHtml.Append(day.DisplayCloseTime);
             }
             else
             {
-                hoursHtml.Append(HtmlString.STRONG_END + HtmlString.BR + HtmlString.NBSP + HtmlString.NBSP);
+                hoursHtml.Append(HtmlStrings.STRONG_END + HtmlStrings.BR + HtmlStrings.NBSP + HtmlStrings.NBSP);
                 hoursHtml.Append(day.DisplayOpenTime);
                 hoursHtml.Append(" " + Resources.GenerateBusinessHoursHtmlTo + " ");
                 hoursHtml.Append(day.DisplayCloseTime);
-                hoursHtml.Append(HtmlString.BR + HtmlString.STRONG);
+                hoursHtml.Append(HtmlStrings.BR + HtmlStrings.STRONG);
                 hoursHtml.Append(Enum.GetName(typeof(DayOfWeek), 0));
-                hoursHtml.Append(HtmlString.STRONG_END + HtmlString.BR + HtmlString.NBSP + HtmlString.NBSP);
+                hoursHtml.Append(HtmlStrings.STRONG_END + HtmlStrings.BR + HtmlStrings.NBSP + HtmlStrings.NBSP);
                 hoursHtml.Append(nextday.DisplayOpenTime);
                 hoursHtml.Append(" " + Resources.GenerateBusinessHoursHtmlTo + " ");
-                hoursHtml.Append(nextday.DisplayCloseTime + HtmlString.BR);
+                hoursHtml.Append(nextday.DisplayCloseTime + HtmlStrings.BR);
             }
 
             return hoursHtml.ToString().Replace("12:00 AM " + Resources.GenerateBusinessHoursHtmlTo + " 12:00 AM", Resources.GenerateBuisinessHoursHtmlOpen24Hours);

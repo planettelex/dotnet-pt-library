@@ -24,7 +24,7 @@ namespace PlanetTelex.Web.Mvc.Extensions.Html.Links
             if (UriParts.Current.Parameters != null && UriParts.Current.Parameters.Count > 0)
                 url += "?" + UriParts.Current.QueryPart;
 
-            return MvcHtmlString.Create(String.Format(HtmlString.LINK, url, HtmlString.LINK_TARGET_BLANK, linkText));
+            return MvcHtmlString.Create(String.Format(HtmlStrings.LINK, url, HtmlStrings.LINK_TARGET_BLANK, linkText));
         }
     }
 }

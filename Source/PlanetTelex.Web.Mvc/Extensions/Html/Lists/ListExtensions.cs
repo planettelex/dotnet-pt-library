@@ -19,12 +19,12 @@ namespace PlanetTelex.Web.Mvc.Extensions.Html.Lists
         /// <returns>A <see cref="MvcHtmlString"/>.</returns>
         public static MvcHtmlString ToHtmlList(this HtmlHelper htmlHelper, IEnumerable items)
         {
-            StringBuilder stringBuilder = new StringBuilder(HtmlString.UNORDERED_LIST);
+            StringBuilder stringBuilder = new StringBuilder(HtmlStrings.UNORDERED_LIST);
             
             foreach (var item in items)
-                stringBuilder.Append(HtmlString.LIST_ITEM.FormatWith(item.ToString()));
+                stringBuilder.Append(HtmlStrings.LIST_ITEM.FormatWith(item.ToString()));
             
-            stringBuilder.Append(HtmlString.UNORDERED_LIST_END);
+            stringBuilder.Append(HtmlStrings.UNORDERED_LIST_END);
 
             return MvcHtmlString.Create(stringBuilder.ToString());
         }

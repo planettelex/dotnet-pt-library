@@ -42,8 +42,8 @@ namespace PlanetTelex.Web.Mvc.Extensions.Html.Links
         /// <returns>A <see cref="MvcHtmlString"/>.</returns>
         public static MvcHtmlString UrlLink(this HtmlHelper htmlHelper, string url, string linkText, bool openInNewWindow)
         {
-            string attributes = openInNewWindow ? HtmlString.LINK_TARGET_BLANK : String.Empty;
-            return MvcHtmlString.Create(String.Format(HtmlString.LINK, url, attributes, linkText));
+            string attributes = openInNewWindow ? HtmlStrings.LINK_TARGET_BLANK : String.Empty;
+            return MvcHtmlString.Create(String.Format(HtmlStrings.LINK, url, attributes, linkText));
         }
     }
 }

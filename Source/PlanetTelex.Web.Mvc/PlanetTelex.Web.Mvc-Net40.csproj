@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{452AB57C-C668-46AD-BA4D-1180FEA41D9F}</ProjectGuid>
+    <ProjectGuid>{01C7F510-E942-4BF1-BC80-886193F3E2A0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PlanetTelex.Web</RootNamespace>
-    <AssemblyName>PlanetTelex.Web</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <RootNamespace>PlanetTelex.Web.Mvc</RootNamespace>
+    <AssemblyName>PlanetTelex.Web.Mvc</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -22,7 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\PlanetTelex.Web.xml</DocumentationFile>
+    <DocumentationFile>bin\PlanetTelex.Web.Mvc.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,62 +31,59 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\PlanetTelex.Web.xml</DocumentationFile>
+    <DocumentationFile>bin\PlanetTelex.Web.Mvc.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>PlanetTelex.Web.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>PlanetTelex.Web.Mvc.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\HtmlStrings.cs" />
-    <Compile Include="Common\ISelectable.cs" />
-    <Compile Include="Protocols\Http\HttpNotFoundException.cs" />
-    <Compile Include="Protocols\Http\HttpStatusCodes.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Attributes\CacheDurationAttribute.cs" />
+    <Compile Include="Attributes\CompressOutputAttribute.cs" />
+    <Compile Include="Extensions\Ajax\AjaxExtensions.cs" />
+    <Compile Include="Extensions\Html\Lists\ListExtensions.cs" />
+    <Compile Include="Extensions\Html\Lists\SelectListExtensions.cs" />
+    <Compile Include="Extensions\Html\Analytics\GoogleAnalyticsExtensions.cs" />
+    <Compile Include="Extensions\Html\Links\MirrorSiteLinkExtensions.cs" />
+    <Compile Include="Extensions\Html\Lists\TimeDropDownListExtensions.cs" />
+    <Compile Include="Extensions\Html\Links\UrlLinkExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Protocols\Http\HttpString.cs" />
-    <Compile Include="Common\ModelViews\IModelView.cs" />
-    <Compile Include="Syndication\IRssPodcastItem.cs" />
-    <Compile Include="Request\UriParts.cs" />
-    <Compile Include="Request\UriScheme.cs" />
-    <Compile Include="Caching\DataCache.cs" />
-    <Compile Include="Syndication\RssChannel.cs" />
-    <Compile Include="Request\UriSchemeType.cs" />
-    <Compile Include="Syndication\IRssItem.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="Syndication\RssWriter.cs" />
-    <Compile Include="Common\ModelViews\HoursOfOperationView.cs" />
+    <Compile Include="Results\StreamTrackingResult.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="PlanetTelex.Web.snk" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\PlanetTelex.Web\PlanetTelex.Web.csproj">
+      <Project>{452AB57C-C668-46AD-BA4D-1180FEA41D9F}</Project>
+      <Name>PlanetTelex.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PlanetTelex\PlanetTelex.csproj">
       <Project>{742EB706-84C3-4C25-98B9-EA05D83C6A4C}</Project>
       <Name>PlanetTelex</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="PlanetTelex.Web.Mvc.snk" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

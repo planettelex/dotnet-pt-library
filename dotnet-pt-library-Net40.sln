@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetTelex", "Source\PlanetTelex\PlanetTelex-Net40.csproj", "{742EB706-84C3-4C25-98B9-EA05D83C6A4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetTelex.UnitTests", "Source\PlanetTelex.Tests\PlanetTelex.UnitTests-Net40.csproj", "{A8850304-F7C2-454E-A5EC-07A04862BB88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetTelex.Web", "Source\PlanetTelex.Web\PlanetTelex.Web-Net40.csproj", "{452AB57C-C668-46AD-BA4D-1180FEA41D9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetTelex.Web.UnitTests", "Source\PlanetTelex.Web.Tests\PlanetTelex.Web.UnitTests-Net40.csproj", "{BA7B13E6-7BF5-4B8E-8859-436A23C36339}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetTelex.Drawing", "Source\PlanetTelex.Drawing\PlanetTelex.Drawing-Net40.csproj", "{540B06C1-0F09-498A-A79D-E408E5F465D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetTelex.Web.Mvc", "Source\PlanetTelex.Web.Mvc\PlanetTelex.Web.Mvc-Net40.csproj", "{01C7F510-E942-4BF1-BC80-886193F3E2A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{742EB706-84C3-4C25-98B9-EA05D83C6A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{742EB706-84C3-4C25-98B9-EA05D83C6A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{742EB706-84C3-4C25-98B9-EA05D83C6A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{742EB706-84C3-4C25-98B9-EA05D83C6A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8850304-F7C2-454E-A5EC-07A04862BB88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8850304-F7C2-454E-A5EC-07A04862BB88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8850304-F7C2-454E-A5EC-07A04862BB88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8850304-F7C2-454E-A5EC-07A04862BB88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{452AB57C-C668-46AD-BA4D-1180FEA41D9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{452AB57C-C668-46AD-BA4D-1180FEA41D9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{452AB57C-C668-46AD-BA4D-1180FEA41D9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{452AB57C-C668-46AD-BA4D-1180FEA41D9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA7B13E6-7BF5-4B8E-8859-436A23C36339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA7B13E6-7BF5-4B8E-8859-436A23C36339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA7B13E6-7BF5-4B8E-8859-436A23C36339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA7B13E6-7BF5-4B8E-8859-436A23C36339}.Release|Any CPU.Build.0 = Release|Any CPU
+		{540B06C1-0F09-498A-A79D-E408E5F465D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{540B06C1-0F09-498A-A79D-E408E5F465D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{540B06C1-0F09-498A-A79D-E408E5F465D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{540B06C1-0F09-498A-A79D-E408E5F465D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01C7F510-E942-4BF1-BC80-886193F3E2A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01C7F510-E942-4BF1-BC80-886193F3E2A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01C7F510-E942-4BF1-BC80-886193F3E2A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01C7F510-E942-4BF1-BC80-886193F3E2A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

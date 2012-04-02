@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PlanetTelex.Web</RootNamespace>
     <AssemblyName>PlanetTelex.Web</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\HtmlStrings.cs" />
     <Compile Include="Common\ISelectable.cs" />
     <Compile Include="Protocols\Http\HttpNotFoundException.cs" />
     <Compile Include="Protocols\Http\HttpStatusCodes.cs" />
@@ -58,6 +57,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Protocols\Http\HttpString.cs" />
+    <Compile Include="Common\HtmlStrings.cs" />
     <Compile Include="Common\ModelViews\IModelView.cs" />
     <Compile Include="Syndication\IRssPodcastItem.cs" />
     <Compile Include="Request\UriParts.cs" />

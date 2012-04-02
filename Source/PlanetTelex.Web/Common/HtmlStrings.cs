@@ -3,7 +3,7 @@
     /// <summary>
     /// Common HTML string literals, sometimes with values to format dynamically.
     /// </summary>
-    public static class HtmlString
+    public static class HtmlStrings
     {
         /// <summary>
         /// &lt;br/&gt;

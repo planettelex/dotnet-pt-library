@@ -8,3 +8,5 @@ obj
 .project
 target
 .DS_Store
+TestResult.xml
+dotnet-pt-library.VisualState.xml

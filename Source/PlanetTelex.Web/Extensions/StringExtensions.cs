@@ -25,7 +25,7 @@ namespace PlanetTelex.Web.Extensions
         /// <returns>A new string with newlines replaced with &lt;br&gt; tags.</returns>
         public static string ReplaceNewlineCharsWithBrTags(this string s)
         {
-            return s.Replace("\r\n", HtmlString.BR).Replace("\n", HtmlString.BR);
+            return s.Replace("\r\n", HtmlStrings.BR).Replace("\n", HtmlStrings.BR);
         }
     }
 }
