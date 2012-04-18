@@ -3,18 +3,20 @@
 <project name="dotnet-pt-library" default="build" basedir="." xmlns="http://nant.sf.net/release/0.90/nant.xsd">
   <description>Main Solution Build</description>
 
+  <property name="configuration" value="Debug" />
+  <property name="verbosity" value="minimal" />
   <property name="solution.file" value="dotnet-pt-library.sln"/>
   <property name="nunit.project" value="dotnet-pt-library.nunit"/>
   <property name="nant.settings.currentframework" value="net-3.5" />
   <property name="msbuild.path" value="C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe"/>
-  <property name="solution.configuration" value="Debug;TargetFrameworkVersion=v3.5;WarningLevel=0"/>
+  <property name="solution.configuration" value="${configuration};TargetFrameworkVersion=v3.5;WarningLevel=0"/>
   <property name="nunit.path" value="nunit-console.exe"/>
 
   <target name="clean" description="Removes all previously generated solution files.">
     <exec program="${msbuild.path}">
       <arg line='"${solution.file}"' />
       <arg value="/target:Clean" />
-      <arg value="/verbosity:minimal" />
+      <arg value="/verbosity:${verbosity}" />
       <arg value="/nologo" />
     </exec>
   </target>
@@ -24,7 +26,7 @@
       <arg line='"${solution.file}"' />
       <arg line="/property:Configuration=${solution.configuration}" />
       <arg value="/target:Rebuild" />
-      <arg value="/verbosity:minimal" />
+      <arg value="/verbosity:${verbosity}" />
       <arg value="/nologo" />
     </exec>
   </target>
