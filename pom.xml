@@ -1,0 +1,274 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>net.planettelex</groupId>
+	<artifactId>dotnet-pt-library</artifactId>
+	<name>Planet Telex .NET Library</name>
+	<description>A C# .Net library for both web and general contexts.</description>
+
+	<!-- TODO Automatically sync this value to AssemblyInfo.cs -->
+	<version>2.0.0.0</version>
+
+	<inceptionYear>2012</inceptionYear>
+	<organization>
+		<name>Planet Telex Inc.</name>
+		<url>http://www.planettelex.net/products/</url>
+	</organization>
+
+	<properties>
+		<dryRun>true</dryRun>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>no-tests</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<maven.test.skip>true</maven.test.skip>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>release</id>
+
+			<properties>
+				<maven.test.skip>true</maven.test.skip>
+			</properties>
+
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<version>2.5</version>
+						<executions>
+							<execution>
+								<id>copy-resources</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
+									<resources>
+										<!-- PlanetTelex assembly -->
+										<resource>
+											<directory>${project.build.sourceDirectory}/PlanetTelex/bin</directory>
+											<targetPath>PlanetTelex</targetPath>
+											<filtering>false</filtering>
+											<includes>
+												<include>*.*</include>
+											</includes>
+										</resource>
+
+										<!-- PlanetTelex.Drawing assembly -->
+										<resource>
+											<directory>${project.build.sourceDirectory}/PlanetTelex.Drawing/bin</directory>
+											<targetPath>PlanetTelex.Drawing</targetPath>
+											<filtering>false</filtering>
+											<includes>
+												<include>*.*</include>
+											</includes>
+										</resource>
+
+										<!-- PlanetTelex.Web assembly -->
+										<resource>
+											<directory>${project.build.sourceDirectory}/PlanetTelex.Web/bin</directory>
+											<targetPath>PlanetTelex.Web</targetPath>
+											<filtering>false</filtering>
+											<includes>
+												<include>*.*</include>
+											</includes>
+										</resource>
+
+										<!-- PlanetTelex.Web.Mvc assembly -->
+										<resource>
+											<directory>${project.build.sourceDirectory}/PlanetTelex.Web.Mvc/bin</directory>
+											<targetPath>PlanetTelex.Web.Mvc</targetPath>
+											<filtering>false</filtering>
+											<includes>
+												<include>*.*</include>
+											</includes>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<artifactId>maven-assembly-plugin</artifactId>
+						<version>2.2.2</version>
+						<configuration>
+							<descriptors>
+								<descriptor>Assembly/bin.xml</descriptor>
+							</descriptors>
+						</configuration>
+						<executions>
+							<execution>
+								<id>make-assembly</id>
+								<phase>package</phase>
+								<goals>
+									<goal>single</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>deploy</id>
+
+			<properties>
+				<maven.test.skip>true</maven.test.skip>
+			</properties>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.github.github</groupId>
+						<artifactId>downloads-maven-plugin</artifactId>
+						<version>0.4</version>
+						<configuration>
+							<description>${project.version} release of ${project.name}</description>
+							<override>true</override>
+							<includeAttached>true</includeAttached>
+							<dryRun>${dryRun}</dryRun>
+							<includes>
+								<include>*.zip</include>
+							</includes>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>upload</goal>
+								</goals>
+								<phase>package</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<build>
+		<sourceDirectory>Source</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+					<execution>
+						<id>compile</id>
+						<phase>compile</phase>
+						<configuration>
+							<executable>nant</executable>
+							<arguments>
+								<argument>/f:${project.artifactId}.build</argument>
+								<argument>/D:configuration=Release</argument>
+								<argument>clean</argument>
+								<argument>build</argument>
+							</arguments>
+						</configuration>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>test</id>
+						<phase>test</phase>
+						<configuration>
+							<executable>nunit-console</executable>
+							<arguments>
+								<argument>${project.artifactId}.nunit</argument>
+							</arguments>
+						</configuration>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>com.mycila.maven-license-plugin</groupId>
+				<artifactId>maven-license-plugin</artifactId>
+				<version>1.9.0</version>
+				<configuration>
+					<header>etc/header.txt</header>
+					<strictCheck>true</strictCheck>
+					<mapping>
+						<xslt>XML_STYLE</xslt>
+						<build>XML_STYLE</build>
+						<ndoc>XML_STYLE</ndoc>
+					</mapping>
+					<excludes>
+						<exclude>**/${js.header.file}</exclude>
+						<exclude>**/LICENSE*</exclude>
+						<exclude>**/.gitignore</exclude>
+						<exclude>**/_ReSharper*/**</exclude>
+						<exclude>**/Properties/**</exclude>
+						<exclude>**/aspnet_client/**</exclude>
+						<exclude>**/bin/**</exclude>
+						<exclude>**/obj/**</exclude>
+						<exclude>**/*.user</exclude>
+						<exclude>**/*.csproj</exclude>
+						<exclude>**/*.md</exclude>
+						<exclude>**/*.suo</exclude>
+						<exclude>**/*.sln*</exclude>
+						<exclude>**/*.dotCover</exclude>
+						<exclude>**/reset.css</exclude>
+						<exclude>**/.checkstyle</exclude>
+						<exclude>**/readme.txt</exclude>
+						<exclude>**/References/**</exclude>
+						<exclude>**/*.snk</exclude>
+						<exclude>**/TestResult.xml</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<scm>
+		<connection>scm:git:git://github.com/PlanetTelexInc/${project.artifactId}.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com:PlanetTelexInc/${project.artifactId}.git</developerConnection>
+		<url>https://github.com/PlanetTelexInc/${project.artifactId}</url>
+	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>release</id>
+			<url>file:///${project.build.directory}</url>
+		</repository>
+	</distributionManagement>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>mc-release</id>
+			<name>Local Maven repository of releases</name>
+			<url>http://mc-repo.googlecode.com/svn/maven2/releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+</project>
