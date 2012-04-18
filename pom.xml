@@ -230,6 +230,7 @@
 						<exclude>**/References/**</exclude>
 						<exclude>**/*.snk</exclude>
 						<exclude>**/TestResult.xml</exclude>
+						<exclude>**/*.VisualState.xml</exclude>
 					</excludes>
 				</configuration>
 				<executions>
